@@ -2,13 +2,27 @@ body {
 	width: 100%;
 	margin:0;
 }
-#eventContainer {
+header {
+	text-align: center;
+	padding: 2em;
+	background-color: #333;
+	color: #fff;
+}
+.displayNone {
+	display: none;
+}
+#eventFilter {
+	text-align: center;
+}
+#eventContainer, #filterContainer {
 	width: 75%;
 	margin: 0 auto;
 	padding: 2em;
 }
 .event {
 	padding: 2em;
+	margin: 2em;
+	box-shadow: 2px 2px 10px #888888;
 }
 .event:nth-child(even) {
 	background-color: #ddd;

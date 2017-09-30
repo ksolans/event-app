@@ -15,10 +15,19 @@
 	<header>
 		<h1>Event App</h1>
 	</header>
-	<section>
-		<div id="eventContainer">
-			
+	<section name="eventFilter" id="eventFilter">
+		<div id="filterContainer">
+			<select name="floors" id="floorFilter">
+				<option value="any floor">Any Floor</option>
+				<option value="floor 2">Floor 2</option>
+				<option value="floor 6">Floor 6</option>
+			</select>
+			<input type="submit" id="filterSubmit">
+			<input type="text" id="nameInput" onkeyup="filterName()" placeholder="Search for names..">
 		</div>
+	</section>
+	<section name="eventListing">
+		<div id="eventContainer"></div>
 	</section>
 	<script>		
 		function ajax_get(url, callback) {
@@ -48,8 +57,8 @@
 			    html += "<h2>" + data[i].title + "</h2>";
 				html += "<strong>Session: </strong>" + data[i].session + "<br>";
 				html += "<strong>Room: </strong>" + data[i].room + "<br>";
-				html += "<strong>Floor </strong>" + data[i].floor + "<br>";
-				html += "<strong>Organizer: </strong>" + data[i].organizer.name + " &mdash; <a href=\"mailto:" + data[i].organizer.email + "\">" + data[i].organizer.email + "</a> (" + data[i].organizer.location + ")" + "<br>";
+				html += "<strong>Floor: </strong><span class=\"floorValue\">" + data[i].floor + "</span><br>";
+				html += "<strong>Organizer: </strong><span class=\"name\">" + data[i].organizer.name + "</span> &mdash; <a href=\"mailto:" + data[i].organizer.email + "\">" + data[i].organizer.email + "</a> (" + data[i].organizer.location + ")" + "<br>";
 				html += "<strong>Abstract: </strong>" + data[i].abstract;
 				html += "</div>";
 			    i++;
