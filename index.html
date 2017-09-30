@@ -1,0 +1,77 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+    <title>Event Json Test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://localhost:8888/event-app/events.json"></script>
+</head>
+<body>
+	<header>
+		<h1>Event App</h1>
+	</header>
+	<section>
+		<p id="demo"></p>
+	</section>
+	<script>
+		document.write('<div>Start of JS</div>');
+		//var eventData = $.getJSON('http://localhost:8888/event-app/events.json');
+		//var url = 'http://localhost:8888/event-app/events.json';
+		
+		
+		function ajax_get(url, callback) {
+		    var xmlhttp = new XMLHttpRequest();
+		    xmlhttp.onreadystatechange = function() {
+		        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		            console.log('responseText:' + xmlhttp.responseText);
+		            try {
+		                var data = JSON.parse(xmlhttp.responseText);
+			                
+		            } catch(err) {
+		                console.log(err.message + " in " + xmlhttp.responseText);
+		                return;
+		            }
+		            callback(data);
+		        }
+		    };
+		 
+		    xmlhttp.open("GET", url, true);
+		    xmlhttp.send();
+		}
+		
+		ajax_get('http://localhost:8888/event-app/events.json', function(data) {
+			 // html = "<h2>" + data.title + "</h2>";
+			 // html += "<strong>Session: </strong>" + data.session + "<br>";
+			 // html += "<strong>Room: </strong>" + data.room + "<br>";
+			 // html += "<strong>Floor </strong>" + data.floor;
+		   	
+		   	//document.getElementById("demo").innerHTML = html;
+		   	// var i;
+		    // var iLength = data.length;
+		    // for (i = 0; i < iLength; i++) {
+		    // 	html = "<h2>" + data[i].title + "</h2>";
+			    // html += "<strong>Session: </strong>" + data.session + "<br>";
+			    // html += "<strong>Room: </strong>" + data.room + "<br>";
+			    // html += "<strong>Floor </strong>" + data.floor;
+		        //document.getElementById("demo").innerHTML = html;
+		    //}
+		    var i = 0;
+			var html = "";
+			while (data[i]) {
+			     html += "<h2>" + data[i].title + "</h2>";
+				 html += "<strong>Session: </strong>" + data[i].session + "<br>";
+				 html += "<strong>Room: </strong>" + data[i].room + "<br>";
+				 html += "<strong>Floor </strong>" + data[i].floor;
+			    i++;
+			    document.getElementById("demo").innerHTML = html;
+			}
+
+			console.log(data);
+		});
+	</script>
+</body>
+</html>
