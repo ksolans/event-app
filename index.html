@@ -9,20 +9,18 @@
     <title>Event Json Test</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://localhost:8888/event-app/events.json"></script>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8888/event-app/style.css">
 </head>
 <body>
 	<header>
 		<h1>Event App</h1>
 	</header>
 	<section>
-		<p id="demo"></p>
+		<div id="eventContainer">
+			
+		</div>
 	</section>
-	<script>
-		document.write('<div>Start of JS</div>');
-		//var eventData = $.getJSON('http://localhost:8888/event-app/events.json');
-		//var url = 'http://localhost:8888/event-app/events.json';
-		
-		
+	<script>		
 		function ajax_get(url, callback) {
 		    var xmlhttp = new XMLHttpRequest();
 		    xmlhttp.onreadystatechange = function() {
@@ -41,36 +39,22 @@
 		 
 		    xmlhttp.open("GET", url, true);
 		    xmlhttp.send();
-		}
-		
+		}		
 		ajax_get('http://localhost:8888/event-app/events.json', function(data) {
-			 // html = "<h2>" + data.title + "</h2>";
-			 // html += "<strong>Session: </strong>" + data.session + "<br>";
-			 // html += "<strong>Room: </strong>" + data.room + "<br>";
-			 // html += "<strong>Floor </strong>" + data.floor;
-		   	
-		   	//document.getElementById("demo").innerHTML = html;
-		   	// var i;
-		    // var iLength = data.length;
-		    // for (i = 0; i < iLength; i++) {
-		    // 	html = "<h2>" + data[i].title + "</h2>";
-			    // html += "<strong>Session: </strong>" + data.session + "<br>";
-			    // html += "<strong>Room: </strong>" + data.room + "<br>";
-			    // html += "<strong>Floor </strong>" + data.floor;
-		        //document.getElementById("demo").innerHTML = html;
-		    //}
 		    var i = 0;
 			var html = "";
 			while (data[i]) {
-			     html += "<h2>" + data[i].title + "</h2>";
-				 html += "<strong>Session: </strong>" + data[i].session + "<br>";
-				 html += "<strong>Room: </strong>" + data[i].room + "<br>";
-				 html += "<strong>Floor </strong>" + data[i].floor;
+				html += "<div class=\"event\">";
+			    html += "<h2>" + data[i].title + "</h2>";
+				html += "<strong>Session: </strong>" + data[i].session + "<br>";
+				html += "<strong>Room: </strong>" + data[i].room + "<br>";
+				html += "<strong>Floor </strong>" + data[i].floor + "<br>";
+				html += "<strong>Organizer: </strong>" + data[i].organizer.name + " &mdash; <a href=\"mailto:" + data[i].organizer.email + "\">" + data[i].organizer.email + "</a> (" + data[i].organizer.location + ")" + "<br>";
+				html += "<strong>Abstract: </strong>" + data[i].abstract;
+				html += "</div>";
 			    i++;
-			    document.getElementById("demo").innerHTML = html;
+			    document.getElementById("eventContainer").innerHTML = html;
 			}
-
-			console.log(data);
 		});
 	</script>
 </body>
