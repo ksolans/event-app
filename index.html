@@ -1,0 +1,70 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+    <title>Event Json Test</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://localhost:8888/event-app/events.json"></script>
+	<link rel="stylesheet" type="text/css" href="http://localhost:8888/event-app/style.css">
+</head>
+<body>
+	<header>
+		<h1>Event App</h1>
+	</header>
+	<section name="eventFilter" id="eventFilter">
+		<div id="filterContainer">
+			<select name="floors" id="floorFilter">
+				<option value="any floor">Any Floor</option>
+				<option value="floor 2">Floor 2</option>
+				<option value="floor 6">Floor 6</option>
+			</select>
+			<input type="submit" id="filterSubmit">
+			<input type="text" id="nameInput" onkeyup="filterName()" placeholder="Search for names..">
+		</div>
+	</section>
+	<section name="eventListing">
+		<div id="eventContainer"></div>
+	</section>
+	<script>		
+		function ajax_get(url, callback) {
+		    var xmlhttp = new XMLHttpRequest();
+		    xmlhttp.onreadystatechange = function() {
+		        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		            console.log('responseText:' + xmlhttp.responseText);
+		            try {
+		                var data = JSON.parse(xmlhttp.responseText);
+			                
+		            } catch(err) {
+		                console.log(err.message + " in " + xmlhttp.responseText);
+		                return;
+		            }
+		            callback(data);
+		        }
+		    };
+		 
+		    xmlhttp.open("GET", url, true);
+		    xmlhttp.send();
+		}		
+		ajax_get('http://localhost:8888/event-app/events.json', function(data) {
+		    var i = 0;
+			var html = "";
+			while (data[i]) {
+				html += "<div class=\"event\">";
+			    html += "<h2>" + data[i].title + "</h2>";
+				html += "<strong>Session: </strong>" + data[i].session + "<br>";
+				html += "<strong>Room: </strong>" + data[i].room + "<br>";
+				html += "<strong>Floor: </strong><span class=\"floorValue\">" + data[i].floor + "</span><br>";
+				html += "<strong>Organizer: </strong><span class=\"name\">" + data[i].organizer.name + "</span> &mdash; <a href=\"mailto:" + data[i].organizer.email + "\">" + data[i].organizer.email + "</a> (" + data[i].organizer.location + ")" + "<br>";
+				html += "<strong>Abstract: </strong>" + data[i].abstract;
+				html += "</div>";
+			    i++;
+			    document.getElementById("eventContainer").innerHTML = html;
+			}
+		});
+	</script>
+</body>
+</html>

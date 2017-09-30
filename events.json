@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Curabitur ac velit in eros ultrices rhoncus",
+        "session": "Preconference",
+        "room": "University B",
+        "floor": "Floor 6",
+        "organizer": {
+            "name": "Jim Beam",
+            "email": "test1@fakemail.edu",
+            "location": "University of Virginia"
+        },
+        "abstract": "Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum dignissim et leo non faucibus. Duis sem nisl, efficitur ut aliquam sed, fringilla et massa. Donec placerat, orci vitae sollicitudin rhoncus, dolor nibh feugiat nibh, sit amet varius odio mauris eget leo."
+    },
+    {
+        "title": "Maecenas gravida est posuere rutrum placerat",
+        "session": "Preconference",
+        "room": "University A",
+        "floor": "Floor 2",
+        "organizer": {
+            "name": "Jack Daniels",
+            "email": "test2@email.com",
+            "location": "University of New Mexico"
+        },
+        "abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vulputate mauris non scelerisque consectetur. Fusce scelerisque metus ullamcorper mi dictum suscipit. Etiam vitae nisl nunc. Curabitur in hendrerit erat. Sed ut pharetra erat. Etiam commodo risus nulla, in malesuada odio rutrum a. Aenean eu luctus nunc. Curabitur aliquam venenatis elit, nec commodo lectus mollis in. Pellentesque vel dolor justo. Ut tempor in neque nec cursus. Vestibulum maximus odio odio, ut consectetur ipsum condimentum et. Nam eget turpis ex."
+    },
+    {
+        "title": "Nulla scelerisque nec ligula viverra elementum",
+        "session": "Conference",
+        "room": "University A",
+        "floor": "Floor 3",
+        "organizer": {
+            "name": "Trader Joe",
+            "email": "TJ@monkeys.org",
+            "location": "University of Boats"
+        },
+        "abstract": "Curabitur diam urna, rhoncus vel sodales et, volutpat et magna. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse potenti. Praesent semper lacinia quam, a bibendum ipsum consequat at. Fusce dignissim convallis velit, a scelerisque ipsum sagittis a."
+    }
+]
