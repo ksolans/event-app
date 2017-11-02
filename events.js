@@ -4,8 +4,7 @@ function ajax_get(url, callback) {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             //console.log('responseText:' + xmlhttp.responseText);
             try {
-                var data = JSON.parse(xmlhttp.responseText);
-	                
+                var data = JSON.parse(xmlhttp.responseText);                
             } catch(err) {
                 console.log(err.message + " in " + xmlhttp.responseText);
                 return;
@@ -35,30 +34,21 @@ ajax_get('http://localhost:8888/event-app/events.json', function(data) {
 
     var filter = document.getElementById('floorFilter');
     var submit = '#filterSubmit';
-    //var filterV = filter.value;
-    var floor = document.getElementsByClassName('floorValue');
     
     var event = '.event';
+    var i = 0;
 
     $(submit).on('click', function(){
-    	var filterV = filter.value;
-    	console.log(filterV);  
-
-    		floorV = data[i].floor;
-    		console.log('another: ' + floorV)
-    	for (i in data) {
-    		// floorV = String(floorV).valueOf();
-    		// fiterV = String(filterV).valueOf();
-    		
-    		var x;
-    		for (x in event) {
-    			//console.log(floorV);
-
-	    		if (floorV == filterV) {
-	    			console.log('checking all values each time through');
-	    			$(event).addClass('displayNone');
-	    		}
-    		}
-    	}
+        var filterV = filter.value;
+        $(event).each(function(){
+            var floorV = data[i++].floor;
+            console.log('Floor: ' + floorV + ' Filter: ' + filterV);
+            if (floorV != filterV) {
+                $(this).addClass('displayNone');
+            } else if (floorV === data[0].floor) {
+                $(event).removeClass('displayNone');
+                console.log('do Noth');
+            }
+        });
     })
 })
