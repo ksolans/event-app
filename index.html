@@ -10,6 +10,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://localhost:8888/event-app/events.json"></script>
 	<link rel="stylesheet" type="text/css" href="/event-app/style.css">
+	<style id="js-style"></style>
 </head>
 <body>
 	<header>
@@ -19,8 +20,8 @@
 		<div id="filterContainer">
 			<select name="floors" id="floorFilter">
 				<option value="Any Floor">Any Floor</option>
-				<option value="Floor 2">Floor 2</option>
-				<option value="Floor 6">Floor 6</option>
+				<option value="2">Floor 2</option>
+				<option value="6">Floor 6</option>
 			</select>
 			<input type="submit" id="filterSubmit">
 			<input type="text" id="nameInput" onkeyup="filterName()" placeholder="Search for names..">
@@ -34,5 +35,5 @@
 	</section>
 </body>
 
-	<script type="text/javascript" src="/event-app/events.js" ></script>
+	<script type="text/javascript" src="/event-app/event-2.js" ></script>
 </html>

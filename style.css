@@ -11,6 +11,9 @@ header {
 .displayNone {
 	display: none;
 }
+.displayShow {
+	display: block;
+}
 #eventFilter {
 	text-align: center;
 }

@@ -31,7 +31,7 @@ ajax_get('http://localhost:8888/event-app/events.json', function(data) {
 	    i++;
 	    document.getElementById("eventContainer").innerHTML = html;
 	}		
-    
+
     var filter = document.getElementById('floorFilter');
     var submit = '#filterSubmit';
     
@@ -40,15 +40,17 @@ ajax_get('http://localhost:8888/event-app/events.json', function(data) {
 
     $(submit).on('click', function(){
         var filterV = filter.value;
-        $(event).each(function(){
-            var floorV = data[i++].floor;
-            console.log('Floor: ' + floorV + ' Filter: ' + filterV);
-            if (floorV == filterV) {
-                $(this).addClass('displayShow');
-            } else {
+        const style = document.getElementById('js-style');
+        if(filterV === 'Any Floor') {
+            style.innerHTML = '';
+        } else {
+            style.innerHTML = `
+                .floor:not(.floor-${filterV}){
+                    display:none
+                }
+            `;
+            
+        }
 
-                $(this).addClass('displayNone');
-            }
-        });
     })
-})
+})  

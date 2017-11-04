@@ -3,7 +3,7 @@
         "title": "Curabitur ac velit in eros ultrices rhoncus",
         "session": "Preconference",
         "room": "University B",
-        "floor": "Floor 6",
+        "floor": 6,
         "organizer": {
             "name": "Jim Beam",
             "email": "test1@fakemail.edu",
@@ -15,7 +15,7 @@
         "title": "Maecenas gravida est posuere rutrum placerat",
         "session": "Preconference",
         "room": "University A",
-        "floor": "Floor 2",
+        "floor": 2,
         "organizer": {
             "name": "Jack Daniels",
             "email": "test2@email.com",
@@ -27,7 +27,7 @@
         "title": "Nulla scelerisque nec ligula viverra elementum",
         "session": "Conference",
         "room": "University A",
-        "floor": "Floor 3",
+        "floor": 3,
         "organizer": {
             "name": "Trader Joe",
             "email": "TJ@monkeys.org",
